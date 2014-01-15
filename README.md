@@ -17,4 +17,5 @@ csvcut sample_csv.csv bar ,
 # same thing
 csvcut sample_csv.csv bar --delimiter ,
 ```
-```
+
+This could be extended to have the possibility of also outputting the column name, or of outputting multiple columns.
