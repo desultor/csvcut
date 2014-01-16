@@ -21,6 +21,12 @@ csvcut sample_csv.csv bar --delimiter ,
 ```bash
 # what are all the values of the "Species" column in a directory full of selection tables?
 for i in *.txt; do; csvcut $i Species; done | sort | uniq -c
+
+# the old way  :(
+for i in *.txt; do; perl -F"\t" -lane 'if ($. == 1) {foreach (0..$#F) {$col{$F[$_]} = $_}} else {print $F[$col{"Species"}]}' $i; done | sort | uniq -c
+
+# do it recursively
+find /path/to/directory -iname '*selections.txt' | xargs -ifoo -n1 csvcut foo Species | sort | uniq -c
 ```
 
 
