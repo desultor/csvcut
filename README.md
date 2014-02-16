@@ -3,8 +3,33 @@ csvcut
 
 A tool to cut values specified by column name from delimiter-separated files.
 
+Requirements
+------
+ * UNIXey operating system (OS X, Linux, cygwin on Windows)
+ * Python 3 (tested on 3.3.4)
+
+Setup
+-------
+1. Clone the repository
+2. If your python 3 is callable as python3, skip to the next step. Otherwise set a symlink so that you can call python3 by that name
+  ```bash
+  ln -s /opt/local/bin/python3.3 ~/bin/python3
+  ```
+3. Set a symlink so that csvcut calls the executable in the git repo
+ ```bash
+ ln -s ~/csvcut/csvcut.py3 ~/bin/csvcut
+ ```
+
+
 Examples
 -----
+```bash
+# print usage pattern
+csvcut --help
+# same thing
+csvcut -h
+```
+
 ```bash
 # cut out the column "foo" from a tab-separated file
 csvcut foo tests/test_sets/sample_csv.tsv 
