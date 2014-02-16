@@ -11,12 +11,12 @@ Requirements
 Setup
 -------
 1. Clone the repository
-2. If your python 3 is callable as python3, skip to the next step. Otherwise set a symlink so that you can call python3 by that name
-  ```bash
+2. If your python 3 is callable as python3, skip to the next step. Otherwise set a symlink so that you can call python3 by that name, e.g.:
+  ```
   ln -s /opt/local/bin/python3.3 ~/bin/python3
   ```
-3. Set a symlink so that csvcut calls the executable in the git repo
- ```bash
+3. Set a symlink so that csvcut calls the executable in the git repo, e.g.:
+ ```
  ln -s ~/csvcut/csvcut.py3 ~/bin/csvcut
  ```
 
