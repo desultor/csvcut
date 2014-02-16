@@ -7,17 +7,17 @@ Examples
 -----
 ```bash
 # cut out the column "foo" from a tab-separated file
-csvcut foo sample_csv.tsv 
+csvcut foo tests/test_sets/sample_csv.tsv 
 # cut out the column "foo" from all the tab-separated files
-csvcut foo *.tsv 
+csvcut foo tests/test_sets/*.tsv 
 # cut out the column "two words" from a tab-separated file
-csvcut "two words" sample_csv.tsv 
+csvcut "two words" tests/test_sets/sample_csv.tsv 
 ```
 ```bash
 # cut out the column "bar" from a comma-separated file
-csvcut bar sample_csv.csv --delimiter ,
+csvcut bar tests/test_sets/sample_csv.csv --delimiter ,
 # same thing
-csvcut -d , bar sample_csv.csv 
+csvcut -d , bar tests/test_sets/sample_csv.csv 
 ```
 
 ```bash
