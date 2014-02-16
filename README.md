@@ -22,7 +22,9 @@ csvcut sample_csv.csv bar --delimiter ,
 # what are all the values of the "Species" column in a directory full of selection tables?
 csvcut Species *.txt
 
-# do it recursively
+# recursively find the values in the "Species" column within a directory,
+# and print how many times each value occurs (good for finding oddball values
+# like typos or capitalization errors in text fields)
 find /path/to/directory -iname '*selections.txt' | xargs -ifilename -n1 csvcut Species filename | sort | uniq -c
 ```
 
