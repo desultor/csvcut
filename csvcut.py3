@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 
 import csv
@@ -12,10 +12,12 @@ parser.add_argument("file_name",
 					nargs="+")
 parser.add_argument("--delimiter", nargs=1,
 					help="the delimiter character (default is tab)")
+
 args=parser.parse_args()
 delim = args.delimiter[0] if args.delimiter else "\t"
 # parse backslashed characters (e.g. \t)
 delim = bytes(delim, "utf-8").decode("unicode_escape")
+
 for current_file in args.file_name:
 	with open(current_file, newline="") as csvfile:
 		reader = csv.reader(csvfile, delimiter=delim[0])
