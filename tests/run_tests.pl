@@ -6,7 +6,7 @@ use strict;
 # I don't see a way to do testing without installing extra python packages, so
 # for now I'm just doing it with this.  
 
-# build a function reference for a function to test a particular invocation of
+# return a reference for a function to test a particular invocation of
 # the script
 sub command_test {
   my ($explanation_string, # the plaintext describing the test
@@ -22,6 +22,7 @@ sub command_test {
 	my $foo = system("diff script_outputs/$resultfile expected_results/$resultfile");
 	if ($foo == 0) {
 	  print "SUCCESS\n";
+	  unlink "script_outputs/$resultfile";
 	} else {
 	  print "FAILURE\n";
 	}
