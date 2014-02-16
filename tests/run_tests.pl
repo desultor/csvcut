@@ -60,6 +60,12 @@ push @tests, (
   command_test(q(Short switch quoted delimiter in other position),
 			   q(csvcut bar -d ',' test_sets/sample_csv.csv),
 			   q(csv_delimiter_short_switch_2.result)),
+  command_test(q(Delimiter passed as character escape),
+			   q(csvcut bar -d "\t" test_sets/sample_csv.tsv),
+			   q(tsv_special_character.result)),
+  command_test(q(Delimiter passed as literal),
+			   q(csvcut bar -d "	" test_sets/sample_csv.tsv),
+			   q(tsv_string_literal.result)),
 );
 
 # run the test functions
