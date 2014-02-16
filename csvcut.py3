@@ -10,7 +10,7 @@ parser.add_argument("column_name",
 parser.add_argument("file_name",
 					help="the file(s) to extract it from",
 					nargs="+")
-parser.add_argument("--delimiter", nargs=1,
+parser.add_argument("-d", "--delimiter", nargs=1,
 					help="the delimiter character (default is tab)")
 
 args=parser.parse_args()

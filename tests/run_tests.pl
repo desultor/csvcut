@@ -54,6 +54,12 @@ push @tests, (
   command_test(q(Quote the delimiter),
 			   q(csvcut bar test_sets/sample_csv.csv --delimiter ","),
 			   q(csv_delimiter_quoted.result)),
+  command_test(q(Use shortened delimiter command line switch),
+			   q(csvcut -d , bar test_sets/sample_csv.csv),
+			   q(csv_delimiter_short_switch.result)),
+  command_test(q(Short switch quoted delimiter in other position),
+			   q(csvcut bar -d ',' test_sets/sample_csv.csv),
+			   q(csv_delimiter_short_switch_2.result)),
 );
 
 # run the test functions
