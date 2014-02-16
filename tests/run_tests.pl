@@ -11,21 +11,21 @@ use strict;
 sub command_test {
   my ($explanation_string, # the plaintext describing the test
       $command, # the command to be tested
-	  $resultfile) # the name of the result file (same as expected results file)
-	  = @_;
+      $resultfile) # the name of the result file (same as expected results file)
+      = @_;
   return sub {  
     print "$explanation_string: ";
-	my $result = `$command`;
-	open OUT, ">script_outputs/$resultfile" or die "can't: $!";
-	print OUT $result;
-	close OUT;
-	my $foo = system("diff script_outputs/$resultfile expected_results/$resultfile");
-	if ($foo == 0) {
-	  print "SUCCESS\n";
-	  unlink "script_outputs/$resultfile";
-	} else {
-	  print "FAILURE\n";
-	}
+    my $result = `$command`;
+    open OUT, ">script_outputs/$resultfile" or die "can't: $!";
+    print OUT $result;
+    close OUT;
+    my $foo = system("diff script_outputs/$resultfile expected_results/$resultfile");
+    if ($foo == 0) {
+      print "SUCCESS\n";
+      unlink "script_outputs/$resultfile";
+    } else {
+      print "FAILURE\n";
+    }
   },
 }
 
@@ -34,38 +34,38 @@ sub command_test {
 my @tests;
 push @tests, (
   command_test(q(Cut out column "foo" from a single tsv file),
-			   q(csvcut foo test_sets/sample_csv.tsv),
-			   q(tsv.result)),
+               q(csvcut foo test_sets/sample_csv.tsv),
+               q(tsv.result)),
   command_test(q(Cut out column "foo" from all the tsv files),
-			   q(csvcut foo test_sets/*.tsv),
-			   q(multiple_tsv.result)),
+               q(csvcut foo test_sets/*.tsv),
+               q(multiple_tsv.result)),
   command_test(q(Cut out column "two words" from a tsv file),
-			   q(csvcut "two words" test_sets/sample_csv.tsv),
-			   q(two_words_tsv.result)),
+               q(csvcut "two words" test_sets/sample_csv.tsv),
+               q(two_words_tsv.result)),
   command_test(q(Cut out column "bar" from a csv file),
-			   q(csvcut bar test_sets/sample_csv.csv --delimiter ,),
-			   q(csv.result)),
+               q(csvcut bar test_sets/sample_csv.csv --delimiter ,),
+               q(csv.result)),
   command_test(q(Delimiter argument at the front of the command),
-			   q(csvcut --delimiter , bar test_sets/sample_csv.csv),
-			   q(csv_delimiter_front.result)),
+               q(csvcut --delimiter , bar test_sets/sample_csv.csv),
+               q(csv_delimiter_front.result)),
   command_test(q(Delimiter argument in the middle of the command),
-			   q(csvcut bar --delimiter , test_sets/sample_csv.csv),
-			   q(csv_delimiter_middle.result)),
+               q(csvcut bar --delimiter , test_sets/sample_csv.csv),
+               q(csv_delimiter_middle.result)),
   command_test(q(Quote the delimiter),
-			   q(csvcut bar test_sets/sample_csv.csv --delimiter ","),
-			   q(csv_delimiter_quoted.result)),
+               q(csvcut bar test_sets/sample_csv.csv --delimiter ","),
+               q(csv_delimiter_quoted.result)),
   command_test(q(Use shortened delimiter command line switch),
-			   q(csvcut -d , bar test_sets/sample_csv.csv),
-			   q(csv_delimiter_short_switch.result)),
+               q(csvcut -d , bar test_sets/sample_csv.csv),
+               q(csv_delimiter_short_switch.result)),
   command_test(q(Short switch quoted delimiter in other position),
-			   q(csvcut bar -d ',' test_sets/sample_csv.csv),
-			   q(csv_delimiter_short_switch_2.result)),
+               q(csvcut bar -d ',' test_sets/sample_csv.csv),
+               q(csv_delimiter_short_switch_2.result)),
   command_test(q(Delimiter passed as character escape),
-			   q(csvcut bar -d "\t" test_sets/sample_csv.tsv),
-			   q(tsv_special_character.result)),
+               q(csvcut bar -d "\t" test_sets/sample_csv.tsv),
+               q(tsv_special_character.result)),
   command_test(q(Delimiter passed as literal),
-			   q(csvcut bar -d "	" test_sets/sample_csv.tsv),
-			   q(tsv_string_literal.result)),
+               q(csvcut bar -d "	" test_sets/sample_csv.tsv),
+               q(tsv_string_literal.result)),
 );
 
 # run the test functions
