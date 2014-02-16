@@ -14,7 +14,7 @@ csvcut foo *.tsv
 csvcut "two words" sample_csv.tsv 
 ```
 ```bash
-# same thing
+# cut out the column "bar" from a comma-separated file
 csvcut sample_csv.csv bar --delimiter ,
 ```
 
