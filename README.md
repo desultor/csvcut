@@ -3,6 +3,10 @@ csvcut
 
 A tool to cut values specified by column name from delimiter-separated files.
 
+Warning
+------
+Somehow I built this tool without noticing the existence of the "[csvcut](http://csvkit.readthedocs.org/en/latest/scripts/csvcut.html)" tool in the excellent [csvkit](http://csvkit.readthedocs.org/en/latest/index.html). Use that instead of this!
+
 Requirements
 ------
  * UNIXey operating system (OS X, Linux, cygwin on Windows)
