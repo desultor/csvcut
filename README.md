@@ -62,4 +62,4 @@ find /path/to/directory -iname '*selections.txt' | xargs -ifilename -n1 csvcut S
 
 What's Next?
 -----
-I don't have any plans to extend this at the moment, but it would be nice to have the possibility of outputting the column name in addition to the column data, or of outputting multiple columns.
+I don't have any plans to extend this at the moment, but it would be nice to have the possibility of outputting the column name in addition to the column data, or of outputting multiple columns. This sentence constitutes an inconsequential change to this file.
